@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div-laout>
+      <h3 slot="one">这里是插槽</h3>
+    </div-laout>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    Vue.component('div-laout', {
+      template: `
+      <div>
+        <h1>slot放在模板中</h1>
+        <slot name="one"></slot>
+        </div>
+      `
+    })
+    const vm = new Vue({
+      el: '#app',
+      data: {}
+    })
+  </script>
+</body>
+</html>

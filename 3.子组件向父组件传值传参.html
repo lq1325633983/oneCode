@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{count}}</div>
+    <tion-item @title="getbtns($event)"></tion-item>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        count: '我是父组件数据'
+      },
+      methods: {
+        getbtns (val) {
+          this.count = this.count + val
+        }
+      },
+      components: {
+        TionItem: {
+          data () {
+            return {
+              msg: '我是子组件'
+            }
+          },
+          // $emit()的第二个参数是传参的，并且通过$event接收
+          template: `
+          <div>
+            <h1>{{msg}}</h1>
+            <button @click='$emit("title","子向父传值成功")'>按钮</button>
+          </div>
+          `
+        }
+      }
+    })
+  </script>
+</body>
+</html>

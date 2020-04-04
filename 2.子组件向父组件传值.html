@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <div>{{count}}</div>
+    <tion-item @title="getbtns"></tion-item>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        count: '我是父组件数据'
+      },
+      methods: {
+        getbtns () {
+          this.count = this.count + '子向父传值成功'
+        }
+      },
+      components: {
+        TionItem: {
+          data () {
+            return {
+              msg: '我是子组件'
+            }
+          },
+          template: `
+          <div>
+            <h1>{{msg}}</h1>
+            <button @click='$emit("title")'>按钮</button>
+          </div>
+          `
+        }
+      }
+    })
+  </script>
+</body>
+</html>

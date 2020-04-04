@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <btn-one></btn-one>
+    <btn-two></btn-two>
+  </div>
+  <script src="./vue.js"></script>
+  <script>
+    Vue.component('btn-one', {
+      data () {
+        return {
+          msg: 1
+        }
+      },
+      template: `
+        <div>
+          <div><button>按钮1</button></div>
+          <div><p>{{msg}}</p></div>
+        </div>
+        `
+    });
+    Vue.component('btn-two', {
+      data () {
+        return {
+          count: 2
+        }
+      },
+      template: `
+      <div>
+          <div><button>按钮2</button></div>
+          <div><p>{{count}}</p></div>
+        </div>
+        `
+    });
+    const vm = new Vue({
+      el: '#app',
+      data: {}
+    })
+  </script>
+</body>
+</html>
